@@ -1,0 +1,38 @@
+{
+  "ebooks": [
+    {
+      "title": "RS Aggarwal Quantitative Aptitude",
+      "description": "Popular book for quantitative aptitude for competitive exams.",
+      "file": "pdfs/ebooks/rs-aggarwal-quantitative-aptitude.pdf",
+      "subject": "Quantitative Aptitude",
+      "exam": "Competitive Exams",
+      "year": "—"
+    },
+    {
+      "title": "Logical Reasoning",
+      "description": "funny boy trying to study",
+      "file": "pdfs/ebooks/1764344034392-dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050.pdf",
+      "subject": "Logical Reasoning",
+      "exam": "rrb",
+      "year": "2021"
+    }
+  ],
+  "questionPapers": [
+    {
+      "title": "General Awareness",
+      "description": "Yeah its very good for general awareness",
+      "file": "pdfs/question-papers/1764344544226-vdoc.pub_lucent-s-general-knowledge.pdf",
+      "subject": "General Awareness",
+      "exam": "Compitative & Non Compitative",
+      "year": "2025"
+    },
+    {
+      "title": "English",
+      "description": "\"best prefered book for English \"",
+      "file": "pdfs/question-papers/1764349753846-study-iq_english-for-all-exams.pdf",
+      "subject": "English",
+      "exam": "Compitative, Non Compitative, ssc, intermediate",
+      "year": "2025"
+    }
+  ]
+}
