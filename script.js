@@ -3,7 +3,7 @@
 // ====== DATA: E-BOOKS ======
 const ebooks = [
   {
-    title: "RS Aggarwal Quantitative Aptitude",
+    title: "RS Aggarwal Quantitative Aptitude9",
     description: "Popular book for quantitative aptitude for competitive exams.",
     file: "pdfs/ebooks/rs-aggarwal-quantitative-aptitude.pdf",
     subject: "Quantitative Aptitude",
@@ -11,61 +11,7 @@ const ebooks = [
     year: "2021"
   },
   {
-    title: "a-modern-approach-to-logical-reasoning",
-    description: "Popular book for quantitative aptitude for competitive exams.",
-    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
-    subject: "Logical Reasoning",
-    exam: "SSC",
-    year: "2024"
-  },
-
-   {
-    title: "a-modern-approach-to-logical-reasoning",
-    description: "Popular book for quantitative aptitude for competitive exams.",
-    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
-    subject: "Logical Reasoning",
-    exam: "SSC",
-    year: "2024"
-  },
-
-   {
-    title: "a-modern-approach-to-logical-reasoning",
-    description: "Popular book for quantitative aptitude for competitive exams.",
-    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
-    subject: "Logical Reasoning",
-    exam: "SSC",
-    year: "2024"
-  },
-
-   {
-    title: "a-modern-approach-to-logical-reasoning",
-    description: "Popular book for quantitative aptitude for competitive exams.",
-    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
-    subject: "Logical Reasoning",
-    exam: "SSC",
-    year: "2024"
-  },
-
-   {
-    title: "a-modern-approach-to-logical-reasoning",
-    description: "Popular book for quantitative aptitude for competitive exams.",
-    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
-    subject: "Logical Reasoning",
-    exam: "SSC",
-    year: "2024"
-  },
-
-   {
-    title: "a-modern-approach-to-logical-reasoning",
-    description: "Popular book for quantitative aptitude for competitive exams.",
-    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
-    subject: "Logical Reasoning",
-    exam: "SSC",
-    year: "2024"
-  },
-
-   {
-    title: "a-modern-approach-to-logical-reasoning",
+    title: "a-modern-approach-to-logical-reasoning8",
     description: "Popular book for quantitative aptitude for competitive exams.",
     file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
     subject: "Logical Reasoning",
@@ -74,7 +20,61 @@ const ebooks = [
   },
 
   {
-    title: "a-modern-approach-to-logical-reasoning",
+    title: "a-modern-approach-to-logical-reasoning7",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+
+  {
+    title: "a-modern-approach-to-logical-reasoning6",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+
+  {
+    title: "a-modern-approach-to-logical-reasoning5",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+
+  {
+    title: "a-modern-approach-to-logical-reasoning4",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+
+  {
+    title: "a-modern-approach-to-logical-reasoning3",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+
+  {
+    title: "a-modern-approach-to-logical-reasoning2",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+
+  {
+    title: "a-modern-approach-to-logical-reasoning1",
     description: "Popular book for quantitative aptitude for competitive exams.",
     file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
     subject: "Logical Reasoning",
@@ -95,7 +95,7 @@ const ebooks = [
 // ====== DATA: QUESTION PAPERS ======
 const questionPapers = [
   {
-    title: "RS Aggarwal Practice Set 2023",
+    title: "RS Aggarwal Practice Set 2021",
     description: "Practice paper based on RS Aggarwal quantitative aptitude.",
     file: "pdfs/question-papers/rs-aggarwal-quantitative-aptitude.pdf",
     subject: "Quantitative Aptitude",
@@ -104,7 +104,7 @@ const questionPapers = [
   },
 
   {
-    title: "RS Aggarwal Practice Set 2023",
+    title: "RS Aggarwal Practice Set 2029",
     description: "Practice paper based on RS Aggarwal quantitative aptitude.",
     file: "pdfs/question-papers/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
     subject: "Quantitative Aptitude",
@@ -113,7 +113,7 @@ const questionPapers = [
   },
 
   {
-    title: "RS Aggarwal Practice Set 2023",
+    title: "RS Aggarwal Practice Set 2028",
     description: "Practice paper based on RS Aggarwal quantitative aptitude.",
     file: "pdfs/question-papers/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
     subject: "Quantitative Aptitude",
@@ -122,7 +122,7 @@ const questionPapers = [
   },
 
   {
-    title: "RS Aggarwal Practice Set 2023",
+    title: "RS Aggarwal Practice Set 2027",
     description: "Practice paper based on RS Aggarwal quantitative aptitude.",
     file: "pdfs/question-papers/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
     subject: "Quantitative Aptitude",
@@ -131,7 +131,7 @@ const questionPapers = [
   },
 
   {
-    title: "RS Aggarwal Practice Set 2023",
+    title: "RS Aggarwal Practice Set 2026",
     description: "Practice paper based on RS Aggarwal quantitative aptitude.",
     file: "pdfs/question-papers/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
     subject: "Quantitative Aptitude",
@@ -139,10 +139,10 @@ const questionPapers = [
     year: "2025"
   },
 
-  
+
 
   {
-    title: "RS Aggarwal Practice Set 2023",
+    title: "RS Aggarwal Practice Set 2025",
     description: "Practice paper based on RS Aggarwal quantitative aptitude.",
     file: "pdfs/question-papers/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
     subject: "Quantitative Aptitude",
@@ -151,7 +151,7 @@ const questionPapers = [
   },
 
   {
-    title: "RS Aggarwal Practice Set 2023",
+    title: "RS Aggarwal Practice Set 2024",
     description: "Practice paper based on RS Aggarwal quantitative aptitude.",
     file: "pdfs/question-papers/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
     subject: "Quantitative Aptitude",
