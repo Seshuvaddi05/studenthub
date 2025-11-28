@@ -17,23 +17,37 @@ function createCard(item) {
   article.appendChild(pDesc);
 
   const meta = document.createElement("p");
-  meta.style = "font-size: 0.8rem; color: #6b7280; margin-bottom: 0.7rem;";
-  meta.textContent = `Exam: ${item.exam || "—"} | Subject: ${item.subject || "—"} | Year: ${item.year || "—"}`;
+  meta.style = "font-size: 0.8rem; color: #6b7280; margin-bottom: 0.4rem;";
+  meta.textContent = `Exam: ${item.exam || "—"} | Subject: ${
+    item.subject || "—"
+  } | Year: ${item.year || "—"}`;
   article.appendChild(meta);
 
   // DOWNLOAD COUNTER
   const dcount = document.createElement("p");
-  dcount.style = "font-size: 0.8rem; color: #374151;";
+  dcount.style = "font-size: 0.8rem; color: #374151; margin-bottom: 0.6rem;";
   dcount.textContent = `Downloads: ${item.downloads || 0}`;
   article.appendChild(dcount);
 
-  // DOWNLOAD LINK (with tracking)
+  // Buttons row: Preview + Download
+  const btnRow = document.createElement("div");
+  btnRow.style = "display:flex; flex-wrap:wrap; gap:0.5rem;";
+
+  const previewBtn = document.createElement("button");
+  previewBtn.type = "button";
+  previewBtn.className = "btn small secondary";
+  previewBtn.textContent = "Preview";
+  previewBtn.addEventListener("click", () => openPdfPreview(item));
+  btnRow.appendChild(previewBtn);
+
   const link = document.createElement("a");
   link.href = `/api/download/${item.type}/${item.index}`;
   link.target = "_blank";
-  link.className = "btn small";
-  link.textContent = "View / Download";
-  article.appendChild(link);
+  link.className = "btn small primary";
+  link.textContent = "Download";
+  btnRow.appendChild(link);
+
+  article.appendChild(btnRow);
 
   return article;
 }
@@ -57,16 +71,30 @@ function createRecentCard(item) {
   article.appendChild(pDesc);
 
   const meta = document.createElement("p");
-  meta.style = "font-size: 0.8rem; color: #6b7280; margin-bottom: 0.7rem;";
-  meta.textContent = `Exam: ${item.exam || "—"} | Subject: ${item.subject || "—"} | Year: ${item.year || "—"}`;
+  meta.style = "font-size: 0.8rem; color: #6b7280; margin-bottom: 0.6rem;";
+  meta.textContent = `Exam: ${item.exam || "—"} | Subject: ${
+    item.subject || "—"
+  } | Year: ${item.year || "—"}`;
   article.appendChild(meta);
+
+  const btnRow = document.createElement("div");
+  btnRow.style = "display:flex; flex-wrap:wrap; gap:0.5rem;";
+
+  const previewBtn = document.createElement("button");
+  previewBtn.type = "button";
+  previewBtn.className = "btn small secondary";
+  previewBtn.textContent = "Preview";
+  previewBtn.addEventListener("click", () => openPdfPreview(item));
+  btnRow.appendChild(previewBtn);
 
   const link = document.createElement("a");
   link.href = `/api/download/${item.type}/${item.index}`;
   link.target = "_blank";
-  link.className = "btn small";
-  link.textContent = "View / Download";
-  article.appendChild(link);
+  link.className = "btn small primary";
+  link.textContent = "Download";
+  btnRow.appendChild(link);
+
+  article.appendChild(btnRow);
 
   return article;
 }
@@ -86,7 +114,7 @@ function renderList(list, containerId) {
   list.forEach((item) => container.appendChild(createCard(item)));
 }
 
-// ====== RENDER RECENT (supports multiple sections) ======
+// ====== RENDER RECENT (for Recent + Popular) ======
 function renderRecent(items, containerId = "recent-list") {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -144,6 +172,28 @@ function filterItems(list, search, examFilter, yearFilter = "") {
   });
 }
 
+// ====== SORT FUNCTION ======
+function sortItems(list, sortBy) {
+  const arr = [...list];
+
+  if (sortBy === "title") {
+    arr.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
+  } else if (sortBy === "downloads") {
+    arr.sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
+  } else if (sortBy === "recent") {
+    // sort by createdAt if available, fallback to original order (index descending)
+    arr.sort((a, b) => {
+      const da = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+      const db = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+      if (db !== da) return db - da;
+      // fallback: newer index first
+      return (b.index ?? 0) - (a.index ?? 0);
+    });
+  }
+
+  return arr;
+}
+
 // ====== LOAD DATA FROM BACKEND ======
 async function loadMaterials() {
   try {
@@ -153,10 +203,13 @@ async function loadMaterials() {
     ebooks = data.ebooks || [];
     questionPapers = data.questionPapers || [];
 
-    // Add type + index to each item
+    // Add type + index for download tracking + preview
     ebooks = ebooks.map((item, i) => ({ ...item, type: "ebook", index: i }));
-    questionPapers = questionPapers.map((item, i) => ({ ...item, type: "questionPaper", index: i }));
-
+    questionPapers = questionPapers.map((item, i) => ({
+      ...item,
+      type: "questionPaper",
+      index: i,
+    }));
   } catch (err) {
     console.error("Error loading materials:", err);
     ebooks = [];
@@ -180,7 +233,7 @@ function getRecentItems(limit = 6) {
   return combined.slice(0, limit);
 }
 
-// ====== STEP 5: MOST DOWNLOADED ======
+// ====== MOST DOWNLOADED ======
 function getMostDownloaded(limit = 6) {
   const combined = [...ebooks, ...questionPapers];
   combined.sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
@@ -204,12 +257,54 @@ function applyTheme(theme) {
   localStorage.setItem("studenthub_theme", theme);
 }
 
+// ====== PDF PREVIEW MODAL ======
+function openPdfPreview(item) {
+  const modal = document.getElementById("pdf-modal");
+  const frame = document.getElementById("pdf-modal-frame");
+  const titleEl = document.getElementById("pdf-modal-title");
+  if (!modal || !frame || !titleEl) return;
+
+  frame.src = item.file; // direct file path
+  titleEl.textContent = item.title || "PDF Preview";
+  modal.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+function closePdfPreview() {
+  const modal = document.getElementById("pdf-modal");
+  const frame = document.getElementById("pdf-modal-frame");
+  if (!modal || !frame) return;
+
+  modal.classList.remove("show");
+  frame.src = "";
+  document.body.style.overflow = "";
+}
+
 // ====== INIT ======
 document.addEventListener("DOMContentLoaded", async () => {
   const yearSpan = document.getElementById("year");
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-  // Load theme
+  // 🔹 Mobile nav toggle
+  const navToggle = document.getElementById("nav-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  if (navToggle && navLinks) {
+    navToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      navToggle.classList.toggle("open");
+    });
+
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        navToggle.classList.remove("open");
+      });
+    });
+  }
+
+  // Theme initial load
   const savedTheme = localStorage.getItem("studenthub_theme") || "light";
   applyTheme(savedTheme);
 
@@ -221,6 +316,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+  // PDF modal close handlers
+  const modalCloseBtn = document.getElementById("pdf-modal-close");
+  const modalBackdrop = document.querySelector(".pdf-modal-backdrop");
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener("click", closePdfPreview);
+  }
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener("click", closePdfPreview);
+  }
+
+  // ESC key closes modal
+  document.addEventListener("keyup", (e) => {
+    if (e.key === "Escape") {
+      closePdfPreview();
+    }
+  });
+
   // Load materials
   await loadMaterials();
 
@@ -229,15 +341,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   populateDropdown(questionPapers, "exam", "qp-exam-filter");
   populateDropdown(questionPapers, "year", "qp-year-filter");
 
-  // Render lists
-  renderList(ebooks, "ebooks-list");
-  renderList(questionPapers, "qp-list");
+  // Render lists (default: recent sort)
+  const initialEbooksSorted = sortItems(ebooks, "recent");
+  const initialQPsorted = sortItems(questionPapers, "recent");
+  renderList(initialEbooksSorted, "ebooks-list");
+  renderList(initialQPsorted, "qp-list");
 
   // Recently Added
   const recentItems = getRecentItems(6);
   renderRecent(recentItems, "recent-list");
 
-  // ⭐ STEP 5 — Most Downloaded
+  // Most Downloaded
   const popularItems = getMostDownloaded(6);
   renderRecent(popularItems, "popular-list");
 
@@ -246,28 +360,38 @@ document.addEventListener("DOMContentLoaded", async () => {
   const qpLen = questionPapers.length;
   const totalLen = ebooksLen + qpLen;
 
-  document.getElementById("ebooks-count").textContent = `(${ebooksLen})`;
-  document.getElementById("qp-count").textContent = `(${qpLen})`;
-  document.getElementById("total-count").textContent = totalLen;
-  document.getElementById("ebooks-count-stat").textContent = ebooksLen;
-  document.getElementById("qp-count-stat").textContent = qpLen;
+  const ebooksCountEl = document.getElementById("ebooks-count");
+  const qpCountEl = document.getElementById("qp-count");
+  const totalCountEl = document.getElementById("total-count");
+  const ebooksStatEl = document.getElementById("ebooks-count-stat");
+  const qpStatEl = document.getElementById("qp-count-stat");
 
-  // EBOOK Filters
+  if (ebooksCountEl) ebooksCountEl.textContent = `(${ebooksLen})`;
+  if (qpCountEl) qpCountEl.textContent = `(${qpLen})`;
+  if (totalCountEl) totalCountEl.textContent = totalLen.toString();
+  if (ebooksStatEl) ebooksStatEl.textContent = ebooksLen.toString();
+  if (qpStatEl) qpStatEl.textContent = qpLen.toString();
+
+  // EBOOK Filters + Sort
   const ebookSearch = document.getElementById("ebook-search");
   const ebookExam = document.getElementById("ebook-exam-filter");
+  const ebookSort = document.getElementById("ebook-sort");
 
   function applyEbookFilters() {
     const filtered = filterItems(ebooks, ebookSearch.value, ebookExam.value);
-    renderList(filtered, "ebooks-list");
+    const sorted = sortItems(filtered, ebookSort.value);
+    renderList(sorted, "ebooks-list");
   }
 
   ebookSearch.addEventListener("input", applyEbookFilters);
   ebookExam.addEventListener("change", applyEbookFilters);
+  ebookSort.addEventListener("change", applyEbookFilters);
 
-  // QUESTION PAPER Filters
+  // QUESTION PAPER Filters + Sort
   const qpSearch = document.getElementById("qp-search");
   const qpExam = document.getElementById("qp-exam-filter");
   const qpYear = document.getElementById("qp-year-filter");
+  const qpSort = document.getElementById("qp-sort");
 
   function applyQPFilters() {
     const filtered = filterItems(
@@ -276,12 +400,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       qpExam.value,
       qpYear.value
     );
-    renderList(filtered, "qp-list");
+    const sorted = sortItems(filtered, qpSort.value);
+    renderList(sorted, "qp-list");
   }
 
   qpSearch.addEventListener("input", applyQPFilters);
   qpExam.addEventListener("change", applyQPFilters);
   qpYear.addEventListener("change", applyQPFilters);
+  qpSort.addEventListener("change", applyQPFilters);
 
   // Back to top button
   const backToTopBtn = document.getElementById("back-to-top");
@@ -308,13 +434,24 @@ document.addEventListener("DOMContentLoaded", async () => {
       const exam = document.getElementById("req-exam").value.trim();
       const details = document.getElementById("req-details").value.trim();
 
+      if (!name || !email || !type || !exam || !details) {
+        alert("Please fill all fields before sending your request.");
+        return;
+      }
+
       const to = "seshuvaddi03@gmail.com";
       const subject = encodeURIComponent(`[StudentHub Request] ${type} - ${exam}`);
       const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nMaterial Type: ${type}\nExam/Subject: ${exam}\n\nDetails:\n${details}`
+        `Name: ${name}\n` +
+          `Email: ${email}\n` +
+          `Material Type: ${type}\n` +
+          `Exam / Subject: ${exam}\n\n` +
+          `Requested Details:\n${details}\n\n` +
+          `Sent from StudentHub website.`
       );
 
-      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      const mailtoLink = `mailto:${to}?subject=${subject}&body=${body}`;
+      window.location.href = mailtoLink;
     });
   }
 
@@ -326,6 +463,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const text = chip.getAttribute("data-text") || "";
       const input = document.getElementById(targetId);
       if (!input) return;
+
       input.value = text;
 
       if (targetId === "ebook-search") applyEbookFilters();

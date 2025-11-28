@@ -6,7 +6,8 @@
       "file": "pdfs/ebooks/rs-aggarwal-quantitative-aptitude.pdf",
       "subject": "Quantitative Aptitude",
       "exam": "Competitive Exams",
-      "year": "—"
+      "year": "—",
+      "downloads": 1
     },
     {
       "title": "Logical Reasoning",
@@ -18,14 +19,6 @@
     }
   ],
   "questionPapers": [
-    {
-      "title": "General Awareness",
-      "description": "Yeah its very good for general awareness",
-      "file": "pdfs/question-papers/1764344544226-vdoc.pub_lucent-s-general-knowledge.pdf",
-      "subject": "General Awareness",
-      "exam": "Compitative & Non Compitative",
-      "year": "2025"
-    },
     {
       "title": "English",
       "description": "\"best prefered book for English \"",

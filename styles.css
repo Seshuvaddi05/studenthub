@@ -33,6 +33,13 @@ body {
   font-size: 1.2rem;
 }
 
+/* Nav links wrapper */
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+/* Default desktop nav links (nav inside navbar) */
 .navbar nav a {
   margin-left: 1rem;
   text-decoration: none;
@@ -44,6 +51,38 @@ body {
 .navbar nav a:hover {
   color: #ffffff;
   transform: translateY(-1px);
+}
+
+/* Mobile hamburger button (hidden by default on desktop) */
+.nav-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.25rem;
+  margin-left: 0.75rem;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #f9fafb;
+  margin: 3px 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Animated X when open */
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
 }
 
 /* Theme toggle button */
@@ -117,10 +156,24 @@ body {
   font-weight: 600;
 }
 
+/* Default secondary – used in hero on dark background */
 .btn.secondary {
   background: transparent;
   color: #f9fafb;
   border-color: #9ca3af;
+}
+
+/* ✅ Secondary when used inside cards (Preview button) */
+.card .btn.secondary,
+.recent-grid .btn.secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+.card .btn.secondary:hover,
+.recent-grid .btn.secondary:hover {
+  background: #e5e7eb;
 }
 
 .btn.small {
@@ -239,7 +292,6 @@ body.dark .recent-card-tag {
   background: #1d4ed8;
   color: #e5e7eb;
 }
-
 
 /* Footer */
 .footer {
@@ -412,17 +464,36 @@ body.dark .recent-card-tag {
   }
 
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 0.5rem;
   }
 
+  /* Show hamburger on small screens */
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  /* Stack links and hide by default */
+  .nav-links {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0.5rem;
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
   .navbar nav a {
-    margin-left: 0.5rem;
+    margin-left: 0;
+    padding: 0.25rem 0;
   }
 
   .theme-toggle-btn {
-    align-self: flex-end;
+    margin-left: auto;
   }
 }
 
@@ -446,6 +517,10 @@ body.dark .navbar nav a {
 
 body.dark .navbar nav a:hover {
   color: #ffffff;
+}
+
+body.dark .nav-toggle span {
+  background: #e5e7eb;
 }
 
 body.dark .theme-toggle-btn {
@@ -491,6 +566,19 @@ body.dark .card {
 
 body.dark .card p {
   color: #e5e7eb;
+}
+
+/* Dark mode version of Preview button inside cards */
+body.dark .card .btn.secondary,
+body.dark .recent-grid .btn.secondary {
+  background: #020617;
+  color: #e5e7eb;
+  border-color: #1f2937;
+}
+
+body.dark .card .btn.secondary:hover,
+body.dark .recent-grid .btn.secondary:hover {
+  background: #111827;
 }
 
 body.dark .filter-input,
@@ -539,4 +627,80 @@ body.dark .footer {
 body.dark .back-to-top {
   background: #fbbf24;
   color: #111827;
+}
+
+/* PDF Preview Modal */
+.pdf-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.pdf-modal.show {
+  display: flex;
+}
+
+.pdf-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+}
+
+.pdf-modal-dialog {
+  position: relative;
+  width: 95%;
+  max-width: 900px;
+  height: 80vh;
+  background: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.6);
+  padding: 0.75rem 0.75rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 51;
+}
+
+.pdf-modal-title {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  padding-right: 2rem;
+}
+
+.pdf-modal-frame {
+  flex: 1;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.pdf-modal-close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.5rem;
+  border: none;
+  background: transparent;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Dark mode for modal */
+body.dark .pdf-modal-dialog {
+  background: #020617;
+  border: 1px solid #1f2937;
+}
+
+body.dark .pdf-modal-frame {
+  border-color: #1f2937;
+}
+
+body.dark .pdf-modal-title {
+  color: #e5e7eb;
+}
+
+body.dark .pdf-modal-close {
+  color: #e5e7eb;
 }

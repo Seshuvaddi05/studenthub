@@ -24,18 +24,26 @@
     <!-- Navbar -->
     <header class="navbar">
         <div class="logo">StudentHub</div>
-        <nav>
+
+        <!-- Mobile hamburger button -->
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Nav links -->
+        <nav class="nav-links" id="nav-links">
             <a href="#ebooks">E-Books</a>
             <a href="#question-papers">Question Papers</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </nav>
 
-        <!-- Theme toggle button -->
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
-            🌙
-        </button>
+        <!-- Theme toggle -->
+        <button id="theme-toggle" class="theme-toggle-btn">🌙</button>
     </header>
+
 
     <!-- Hero Section -->
     <section class="hero">
@@ -102,7 +110,15 @@
             <select id="ebook-exam-filter" class="filter-select">
                 <option value="">All Exams</option>
             </select>
+
+            <!-- NEW: sort dropdown for ebooks -->
+            <select id="ebook-sort" class="filter-select">
+                <option value="recent">Newest</option>
+                <option value="title">Title A–Z</option>
+                <option value="downloads">Most Downloaded</option>
+            </select>
         </div>
+
 
         <!-- Quick filters for ebooks -->
         <div class="quick-filters">
@@ -138,7 +154,15 @@
             <select id="qp-year-filter" class="filter-select">
                 <option value="">All Years</option>
             </select>
+
+            <!-- NEW: sort dropdown for question papers -->
+            <select id="qp-sort" class="filter-select">
+                <option value="recent">Newest</option>
+                <option value="title">Title A–Z</option>
+                <option value="downloads">Most Downloaded</option>
+            </select>
         </div>
+
 
         <!-- Quick filters for question papers -->
         <div class="quick-filters">
@@ -212,6 +236,17 @@
             </p>
         </form>
     </section>
+
+    <!-- PDF Preview Modal -->
+    <div id="pdf-modal" class="pdf-modal">
+        <div class="pdf-modal-backdrop"></div>
+        <div class="pdf-modal-dialog">
+            <button id="pdf-modal-close" class="pdf-modal-close" aria-label="Close preview">×</button>
+            <h3 id="pdf-modal-title" class="pdf-modal-title">PDF Preview</h3>
+            <iframe id="pdf-modal-frame" class="pdf-modal-frame" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
 
     <!-- Footer -->
     <footer class="footer">
