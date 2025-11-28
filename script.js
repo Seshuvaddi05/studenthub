@@ -1,6 +1,6 @@
 // script.js
 
-// ====== DATA ======
+// ====== DATA: E-BOOKS ======
 const ebooks = [
   {
     title: "RS Aggarwal Quantitative Aptitude",
@@ -8,19 +8,165 @@ const ebooks = [
     file: "pdfs/ebooks/rs-aggarwal-quantitative-aptitude.pdf",
     subject: "Quantitative Aptitude",
     exam: "Competitive Exams",
-    year: "—"
+    year: "2021"
   },
+  {
+    title: "a-modern-approach-to-logical-reasoning",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+
+   {
+    title: "a-modern-approach-to-logical-reasoning",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+
+   {
+    title: "a-modern-approach-to-logical-reasoning",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+
+   {
+    title: "a-modern-approach-to-logical-reasoning",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+
+   {
+    title: "a-modern-approach-to-logical-reasoning",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+
+   {
+    title: "a-modern-approach-to-logical-reasoning",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+
+   {
+    title: "a-modern-approach-to-logical-reasoning",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+
+  {
+    title: "a-modern-approach-to-logical-reasoning",
+    description: "Popular book for quantitative aptitude for competitive exams.",
+    file: "pdfs/ebooks/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Logical Reasoning",
+    exam: "SSC",
+    year: "2024"
+  },
+  // 👉 Example: add more ebooks like this
+  // {
+  //   title: "RS Aggarwal Verbal & Non-Verbal Reasoning",
+  //   description: "Reasoning book for bank, SSC and other competitive exams.",
+  //   file: "pdfs/ebooks/rs-aggarwal-reasoning.pdf",
+  //   subject: "Reasoning",
+  //   exam: "Competitive Exams",
+  //   year: "—"
+  // },
 ];
 
+// ====== DATA: QUESTION PAPERS ======
 const questionPapers = [
   {
-    title: "Sample Question Paper 2023",
-    description: "RRB NTPC previous year question paper.",
+    title: "RS Aggarwal Practice Set 2023",
+    description: "Practice paper based on RS Aggarwal quantitative aptitude.",
     file: "pdfs/question-papers/rs-aggarwal-quantitative-aptitude.pdf",
-    subject: "General",
-    exam: "RRB NTPC",
+    subject: "Quantitative Aptitude",
+    exam: "Competitive Exams",
     year: "2023"
   },
+
+  {
+    title: "RS Aggarwal Practice Set 2023",
+    description: "Practice paper based on RS Aggarwal quantitative aptitude.",
+    file: "pdfs/question-papers/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Quantitative Aptitude",
+    exam: "Placement Drive",
+    year: "2025"
+  },
+
+  {
+    title: "RS Aggarwal Practice Set 2023",
+    description: "Practice paper based on RS Aggarwal quantitative aptitude.",
+    file: "pdfs/question-papers/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Quantitative Aptitude",
+    exam: "Placement Drive",
+    year: "2025"
+  },
+
+  {
+    title: "RS Aggarwal Practice Set 2023",
+    description: "Practice paper based on RS Aggarwal quantitative aptitude.",
+    file: "pdfs/question-papers/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Quantitative Aptitude",
+    exam: "Placement Drive",
+    year: "2025"
+  },
+
+  {
+    title: "RS Aggarwal Practice Set 2023",
+    description: "Practice paper based on RS Aggarwal quantitative aptitude.",
+    file: "pdfs/question-papers/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Quantitative Aptitude",
+    exam: "Placement Drive",
+    year: "2025"
+  },
+
+  
+
+  {
+    title: "RS Aggarwal Practice Set 2023",
+    description: "Practice paper based on RS Aggarwal quantitative aptitude.",
+    file: "pdfs/question-papers/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Quantitative Aptitude",
+    exam: "Placement Drive",
+    year: "2025"
+  },
+
+  {
+    title: "RS Aggarwal Practice Set 2023",
+    description: "Practice paper based on RS Aggarwal quantitative aptitude.",
+    file: "pdfs/question-papers/dokumen.pub_a-modern-approach-to-logical-reasoning-1nbsped-8121919053-9788121919050",
+    subject: "Quantitative Aptitude",
+    exam: "Placement Drive",
+    year: "2025"
+  },
+  // 👉 Example: add more question papers here
+  // {
+  //   title: "RRB NTPC Previous Year Paper 2021",
+  //   description: "Official RRB NTPC previous year question paper.",
+  //   file: "pdfs/question-papers/rrb-ntpc-2021.pdf",
+  //   subject: "General",
+  //   exam: "RRB NTPC",
+  //   year: "2021"
+  // },
 ];
 
 // ====== CARD CREATION ======
@@ -61,15 +207,16 @@ function renderList(list, containerId) {
     return;
   }
 
-  list.forEach(item => container.appendChild(createCard(item)));
+  list.forEach((item) => container.appendChild(createCard(item)));
 }
 
 // ====== POPULATE DROPDOWNS ======
 function populateDropdown(list, field, dropdownId) {
   const dropdown = document.getElementById(dropdownId);
-  const values = [...new Set(list.map(item => item[field]))];
+  const values = [...new Set(list.map((item) => item[field]))];
 
-  values.forEach(v => {
+  values.forEach((v) => {
+    if (!v) return;
     const opt = document.createElement("option");
     opt.value = v;
     opt.textContent = v;
@@ -79,11 +226,19 @@ function populateDropdown(list, field, dropdownId) {
 
 // ====== FILTER FUNCTION ======
 function filterItems(list, search, examFilter, yearFilter = "") {
-  return list.filter(item => {
-    const matchesSearch = (item.title + item.description + item.exam + item.subject + item.year)
-      .toLowerCase()
-      .includes(search.toLowerCase());
+  return list.filter((item) => {
+    const text =
+      (item.title || "") +
+      " " +
+      (item.description || "") +
+      " " +
+      (item.exam || "") +
+      " " +
+      (item.subject || "") +
+      " " +
+      (item.year || "");
 
+    const matchesSearch = text.toLowerCase().includes(search.toLowerCase());
     const matchesExam = examFilter ? item.exam === examFilter : true;
     const matchesYear = yearFilter ? item.year === yearFilter : true;
 
@@ -93,9 +248,11 @@ function filterItems(list, search, examFilter, yearFilter = "") {
 
 // ====== INIT ======
 document.addEventListener("DOMContentLoaded", () => {
-
   // Year in footer
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const yearSpan = document.getElementById("year");
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
 
   // Populate dropdowns
   populateDropdown(ebooks, "exam", "ebook-exam-filter");
@@ -124,12 +281,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const qpYear = document.getElementById("qp-year-filter");
 
   function applyQPFilters() {
-    const filtered = filterItems(questionPapers, qpSearch.value, qpExam.value, qpYear.value);
+    const filtered = filterItems(
+      questionPapers,
+      qpSearch.value,
+      qpExam.value,
+      qpYear.value
+    );
     renderList(filtered, "qp-list");
   }
 
   qpSearch.addEventListener("input", applyQPFilters);
   qpExam.addEventListener("change", applyQPFilters);
   qpYear.addEventListener("change", applyQPFilters);
-
 });
